@@ -1,0 +1,40 @@
+{
+  "login": "tlovjind",
+  "nama_pegawai": "tlovjind",
+  "email": "tlovjind@amazon.com",
+  "summary": {
+    "total_trainings": 3,
+    "total_hours": 12.0,
+    "latest_training": "2023-10-12"
+  },
+  "trainings": [
+    {
+      "nama_pelatihan": "Walkie Stacker - [PPPS]",
+      "tanggal": "2023-10-12",
+      "durasi_jam": 4.0,
+      "instructor": "nan",
+      "status": "Completed",
+      "kategori": "PIT Safety",
+      "expiry_date": "2027-01-02"
+    },
+    {
+      "nama_pelatihan": "TUG - Walkie [TUGW]",
+      "tanggal": "2023-10-12",
+      "durasi_jam": 4.0,
+      "instructor": "nan",
+      "status": "Completed",
+      "kategori": "PIT Safety",
+      "expiry_date": "2026-03-11"
+    },
+    {
+      "nama_pelatihan": "PIT Safety - Basic",
+      "tanggal": "2023-10-12",
+      "durasi_jam": 4.0,
+      "instructor": "nan",
+      "status": "Completed",
+      "kategori": "PIT Safety",
+      "expiry_date": "2026-06-10"
+    }
+  ],
+  "last_updated": "2026-03-04 23:01:44"
+}

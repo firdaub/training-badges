@@ -1,0 +1,67 @@
+{
+  "login": "zbladean",
+  "nama_pegawai": "zbladean",
+  "email": "zbladean@amazon.com",
+  "summary": {
+    "total_trainings": 6,
+    "total_hours": 24.0,
+    "latest_training": "2022-11-14"
+  },
+  "trainings": [
+    {
+      "nama_pelatihan": "Pedestrian Powered Pallet Straddle Stacker [PPSS]",
+      "tanggal": "2022-11-14",
+      "durasi_jam": 4.0,
+      "instructor": "nan",
+      "status": "Completed",
+      "kategori": "PIT Safety",
+      "expiry_date": "2029-08-02"
+    },
+    {
+      "nama_pelatihan": "Pedestrian Powered Pallet Jack Long Fork [PPPJ-LF]",
+      "tanggal": "2022-11-14",
+      "durasi_jam": 4.0,
+      "instructor": "nan",
+      "status": "Completed",
+      "kategori": "PIT Safety",
+      "expiry_date": "N/A"
+    },
+    {
+      "nama_pelatihan": "Pedestrian Powered Pallet Jack [PPPJ]",
+      "tanggal": "2022-11-14",
+      "durasi_jam": 4.0,
+      "instructor": "nan",
+      "status": "Completed",
+      "kategori": "PIT Safety",
+      "expiry_date": "N/A"
+    },
+    {
+      "nama_pelatihan": "Counterbalanced forklift [CBFK]",
+      "tanggal": "2022-11-14",
+      "durasi_jam": 4.0,
+      "instructor": "nan",
+      "status": "Completed",
+      "kategori": "PIT Safety",
+      "expiry_date": "N/A"
+    },
+    {
+      "nama_pelatihan": "Walkie Stacker - [PPPS]",
+      "tanggal": "2022-11-14",
+      "durasi_jam": 4.0,
+      "instructor": "nan",
+      "status": "Completed",
+      "kategori": "PIT Safety",
+      "expiry_date": "N/A"
+    },
+    {
+      "nama_pelatihan": "PIT Safety - Basic",
+      "tanggal": "2022-11-14",
+      "durasi_jam": 4.0,
+      "instructor": "nan",
+      "status": "Completed",
+      "kategori": "PIT Safety",
+      "expiry_date": "2027-05-02"
+    }
+  ],
+  "last_updated": "2026-03-04 23:01:45"
+}

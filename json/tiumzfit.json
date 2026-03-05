@@ -1,0 +1,40 @@
+{
+  "login": "tiumzfit",
+  "nama_pegawai": "tiumzfit",
+  "email": "tiumzfit@amazon.com",
+  "summary": {
+    "total_trainings": 3,
+    "total_hours": 12.0,
+    "latest_training": "2022-10-18"
+  },
+  "trainings": [
+    {
+      "nama_pelatihan": "Pedestrian Powered Pallet Jack Long Fork [PPPJ-LF]",
+      "tanggal": "2022-10-18",
+      "durasi_jam": 4.0,
+      "instructor": "nan",
+      "status": "Completed",
+      "kategori": "PIT Safety",
+      "expiry_date": "2029-09-02"
+    },
+    {
+      "nama_pelatihan": "Pedestrian Powered Pallet Jack [PPPJ]",
+      "tanggal": "2022-10-18",
+      "durasi_jam": 4.0,
+      "instructor": "nan",
+      "status": "Completed",
+      "kategori": "PIT Safety",
+      "expiry_date": "2029-09-02"
+    },
+    {
+      "nama_pelatihan": "PIT Safety - Basic",
+      "tanggal": "2022-10-18",
+      "durasi_jam": 4.0,
+      "instructor": "nan",
+      "status": "Completed",
+      "kategori": "PIT Safety",
+      "expiry_date": "N/A"
+    }
+  ],
+  "last_updated": "2026-03-04 23:01:44"
+}

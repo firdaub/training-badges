@@ -1,0 +1,22 @@
+{
+  "login": "tudmariu",
+  "nama_pegawai": "tudmariu",
+  "email": "tudmariu@amazon.com",
+  "summary": {
+    "total_trainings": 1,
+    "total_hours": 4.0,
+    "latest_training": "2017-10-29"
+  },
+  "trainings": [
+    {
+      "nama_pelatihan": "PIT Safety - Basic",
+      "tanggal": "2017-10-29",
+      "durasi_jam": 4.0,
+      "instructor": "nan",
+      "status": "Completed",
+      "kategori": "PIT Safety",
+      "expiry_date": "N/A"
+    }
+  ],
+  "last_updated": "2026-03-04 23:01:44"
+}
