@@ -1,0 +1,22 @@
+{
+  "login": "philajam",
+  "nama_pegawai": "philajam",
+  "email": "philajam@amazon.com",
+  "summary": {
+    "total_trainings": 1,
+    "total_hours": 4.0,
+    "latest_training": "2021-08-22"
+  },
+  "trainings": [
+    {
+      "nama_pelatihan": "PIT Safety - Basic",
+      "tanggal": "2021-08-22",
+      "durasi_jam": 4.0,
+      "instructor": "nan",
+      "status": "Completed",
+      "kategori": "PIT Safety",
+      "expiry_date": "N/A"
+    }
+  ],
+  "last_updated": "2026-03-04 23:01:42"
+}

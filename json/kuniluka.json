@@ -1,0 +1,40 @@
+{
+  "login": "kuniluka",
+  "nama_pegawai": "kuniluka",
+  "email": "kuniluka@amazon.com",
+  "summary": {
+    "total_trainings": 3,
+    "total_hours": 12.0,
+    "latest_training": "2020-10-08"
+  },
+  "trainings": [
+    {
+      "nama_pelatihan": "Pedestrian Powered Pallet Jack Long Fork [PPPJ-LF]",
+      "tanggal": "2020-10-08",
+      "durasi_jam": 4.0,
+      "instructor": "nan",
+      "status": "Completed",
+      "kategori": "PIT Safety",
+      "expiry_date": "N/A"
+    },
+    {
+      "nama_pelatihan": "Pedestrian Powered Pallet Jack [PPPJ]",
+      "tanggal": "2020-10-08",
+      "durasi_jam": 4.0,
+      "instructor": "nan",
+      "status": "Completed",
+      "kategori": "PIT Safety",
+      "expiry_date": "N/A"
+    },
+    {
+      "nama_pelatihan": "PIT Safety - Basic",
+      "tanggal": "2020-10-08",
+      "durasi_jam": 4.0,
+      "instructor": "nan",
+      "status": "Completed",
+      "kategori": "PIT Safety",
+      "expiry_date": "2026-07-06"
+    }
+  ],
+  "last_updated": "2026-03-04 23:01:41"
+}

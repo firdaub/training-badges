@@ -1,0 +1,31 @@
+{
+  "login": "ngstephp",
+  "nama_pegawai": "ngstephp",
+  "email": "ngstephp@amazon.com",
+  "summary": {
+    "total_trainings": 2,
+    "total_hours": 8.0,
+    "latest_training": "2023-05-20"
+  },
+  "trainings": [
+    {
+      "nama_pelatihan": "Pedestrian Powered Pallet Jack [PPPJ]",
+      "tanggal": "2023-05-20",
+      "durasi_jam": 4.0,
+      "instructor": "nan",
+      "status": "Completed",
+      "kategori": "PIT Safety",
+      "expiry_date": "N/A"
+    },
+    {
+      "nama_pelatihan": "PIT Safety - Basic",
+      "tanggal": "2023-05-20",
+      "durasi_jam": 4.0,
+      "instructor": "nan",
+      "status": "Completed",
+      "kategori": "PIT Safety",
+      "expiry_date": "N/A"
+    }
+  ],
+  "last_updated": "2026-03-04 23:01:42"
+}
