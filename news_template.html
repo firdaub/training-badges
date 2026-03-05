@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Training News & Updates</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Amazon Ember', 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .news-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid #4CAF50;
+        }
+        
+        .news-item h3 {
+            color: #232f3e;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .news-item .date {
+            color: #666;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+        
+        .news-item p {
+            color: #444;
+            line-height: 1.6;
+        }
+        
+        .news-item.important {
+            border-left-color: #FF9900;
+            background: #fff8e1;
+        }
+        
+        .news-item.urgent {
+            border-left-color: #dc3545;
+            background: #fff5f5;
+        }
+        
+        .back-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+        
+        .back-button:hover {
+            background: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📰 Training News & Updates</h1>
+            <p>Latest information and announcements</p>
+        </div>
+        
+        <div class="content">
+            <!-- URGENT NEWS -->
+            <div class="news-item urgent">
+                <h3>🚨 URGENT: PIT Safety Training Renewal Deadline</h3>
+                <div class="date">Posted: March 5, 2026</div>
+                <p>
+                    All employees with expiring PIT Safety certifications must complete renewal training 
+                    by March 31, 2026. Please check your badge for expiry dates and schedule your 
+                    renewal session immediately.
+                </p>
+            </div>
+            
+            <!-- IMPORTANT NEWS -->
+            <div class="news-item important">
+                <h3>⚠️ New Safety Protocol Training Available</h3>
+                <div class="date">Posted: March 3, 2026</div>
+                <p>
+                    A new mandatory safety protocol training is now available. All warehouse associates 
+                    must complete this training by end of Q1 2026. Contact your supervisor to schedule.
+                </p>
+            </div>
+            
+            <!-- REGULAR NEWS -->
+            <div class="news-item">
+                <h3>✅ Training Schedule for March 2026</h3>
+                <div class="date">Posted: March 1, 2026</div>
+                <p>
+                    March training sessions are now open for registration:
+                    <br>• Forklift Advanced - March 10-12
+                    <br>• Order Picker Certification - March 15-17
+                    <br>• Safety Refresher - March 20-22
+                    <br><br>
+                    Register through your manager or HR portal.
+                </p>
+            </div>
+            
+            <div class="news-item">
+                <h3>🎓 New Training Badge System Launched</h3>
+                <div class="date">Posted: February 28, 2026</div>
+                <p>
+                    We've launched a new digital training badge system! You can now access your 
+                    training history anytime via QR code. Check your badge for expiry dates and 
+                    stay compliant with all certifications.
+                </p>
+            </div>
+            
+            <div class="news-item">
+                <h3>📊 Q1 2026 Training Compliance Report</h3>
+                <div class="date">Posted: February 25, 2026</div>
+                <p>
+                    Great job team! Our site achieved 95% training compliance in Q1. Keep up the 
+                    excellent work. Remember to renew expiring certifications on time.
+                </p>
+            </div>
+            
+            <a href="javascript:window.close()" class="back-button">← Back to Badge</a>
+        </div>
+    </div>
+</body>
+</html>

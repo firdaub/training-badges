@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice of Drivers - Feedback & Questions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Amazon Ember', 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #FF6B6B 0%, #EE5A6F 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .intro {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 4px solid #FF6B6B;
+        }
+        
+        .intro h2 {
+            color: #232f3e;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+        
+        .intro p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .form-section {
+            margin-bottom: 30px;
+        }
+        
+        .form-section h3 {
+            color: #232f3e;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #232f3e;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #FF6B6B;
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .form-group .hint {
+            font-size: 12px;
+            color: #999;
+            margin-top: 5px;
+        }
+        
+        .category-buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .category-btn {
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .category-btn:hover {
+            border-color: #FF6B6B;
+            background: #fff5f5;
+        }
+        
+        .category-btn.selected {
+            border-color: #FF6B6B;
+            background: #FF6B6B;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #FF6B6B 0%, #EE5A6F 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+        
+        .submit-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .success-message {
+            display: none;
+            background: #d4edda;
+            color: #155724;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .success-message.show {
+            display: block;
+        }
+        
+        .success-message h3 {
+            margin-bottom: 10px;
+        }
+        
+        .error-message {
+            display: none;
+            background: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .error-message.show {
+            display: block;
+        }
+        
+        .back-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #6c757d;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+        
+        .back-button:hover {
+            background: #5a6268;
+        }
+        
+        .anonymous-note {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #ffc107;
+        }
+        
+        .anonymous-note p {
+            color: #856404;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        
+        @media (max-width: 600px) {
+            .category-buttons {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>💬 Voice of Drivers</h1>
+            <p>Your feedback helps us improve!</p>
+        </div>
+        
+        <div class="content">
+            <div class="intro">
+                <h2>We Want to Hear From You!</h2>
+                <p>
+                    Share your feedback, suggestions, or questions about training, safety, 
+                    equipment, or workplace improvements. Your voice matters and helps us 
+                    create a better work environment for everyone.
+                </p>
+            </div>
+            
+            <div class="success-message" id="successMessage">
+                <h3>✅ Thank You!</h3>
+                <p>Your feedback has been submitted successfully. We appreciate your input!</p>
+            </div>
+            
+            <div class="error-message" id="errorMessage">
+                Please fill in all required fields.
+            </div>
+            
+            <form id="vodForm">
+                <div class="form-section">
+                    <h3>📋 Feedback Category</h3>
+                    <div class="category-buttons">
+                        <div class="category-btn" onclick="selectCategory('training')">
+                            🎓 Training
+                        </div>
+                        <div class="category-btn" onclick="selectCategory('safety')">
+                            🔒 Safety
+                        </div>
+                        <div class="category-btn" onclick="selectCategory('equipment')">
+                            🔧 Equipment
+                        </div>
+                        <div class="category-btn" onclick="selectCategory('workplace')">
+                            🏢 Workplace
+                        </div>
+                        <div class="category-btn" onclick="selectCategory('suggestion')">
+                            💡 Suggestion
+                        </div>
+                        <div class="category-btn" onclick="selectCategory('other')">
+                            📝 Other
+                        </div>
+                    </div>
+                    <input type="hidden" id="category" name="category" required>
+                </div>
+                
+                <div class="form-section">
+                    <h3>✍️ Your Feedback</h3>
+                    <div class="form-group">
+                        <label>Subject *</label>
+                        <input type="text" id="subject" name="subject" placeholder="Brief summary of your feedback" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Details *</label>
+                        <textarea id="details" name="details" placeholder="Please provide detailed information about your feedback, suggestion, or question..." required></textarea>
+                        <div class="hint">Be specific and provide examples if possible</div>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h3>👤 Contact Information (Optional)</h3>
+                    <div class="anonymous-note">
+                        <p>
+                            <strong>Anonymous Submission:</strong> You can submit feedback anonymously. 
+                            However, providing your contact information allows us to follow up with you 
+                            if we need more details or want to update you on the resolution.
+                        </p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Your Name (Optional)</label>
+                        <input type="text" id="name" name="name" placeholder="Your name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Login/Employee ID (Optional)</label>
+                        <input type="text" id="login" name="login" placeholder="Your login or employee ID">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Email (Optional)</label>
+                        <input type="email" id="email" name="email" placeholder="your.email@amazon.com">
+                        <div class="hint">We'll use this to follow up if needed</div>
+                    </div>
+                </div>
+                
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    Submit Feedback
+                </button>
+            </form>
+            
+            <br>
+            <a href="javascript:window.close()" class="back-button">← Back to Badge</a>
+        </div>
+    </div>
+    
+    <script>
+        let selectedCategory = '';
+        
+        function selectCategory(category) {
+            // Remove selected class from all buttons
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+            
+            // Add selected class to clicked button
+            event.target.classList.add('selected');
+            
+            // Store selected category
+            selectedCategory = category;
+            document.getElementById('category').value = category;
+        }
+        
+        document.getElementById('vodForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validate required fields
+            const category = document.getElementById('category').value;
+            const subject = document.getElementById('subject').value.trim();
+            const details = document.getElementById('details').value.trim();
+            
+            if (!category || !subject || !details) {
+                document.getElementById('errorMessage').classList.add('show');
+                setTimeout(() => {
+                    document.getElementById('errorMessage').classList.remove('show');
+                }, 3000);
+                return;
+            }
+            
+            // Collect form data
+            const formData = {
+                category: category,
+                subject: subject,
+                details: details,
+                name: document.getElementById('name').value.trim() || 'Anonymous',
+                login: document.getElementById('login').value.trim() || 'Not provided',
+                email: document.getElementById('email').value.trim() || 'Not provided',
+                timestamp: new Date().toISOString(),
+                submittedFrom: 'Training Badge System'
+            };
+            
+            // In production, you would send this to a backend API
+            // For now, we'll just show success message
+            console.log('VOD Feedback Submitted:', formData);
+            
+            // TODO: Send to backend API
+            // fetch('/api/vod-feedback', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify(formData)
+            // });
+            
+            // Show success message
+            document.getElementById('vodForm').style.display = 'none';
+            document.getElementById('successMessage').classList.add('show');
+            
+            // Reset form after 3 seconds
+            setTimeout(() => {
+                document.getElementById('vodForm').reset();
+                document.getElementById('vodForm').style.display = 'block';
+                document.getElementById('successMessage').classList.remove('show');
+                selectedCategory = '';
+                document.querySelectorAll('.category-btn').forEach(btn => {
+                    btn.classList.remove('selected');
+                });
+            }, 3000);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Training Safety Quiz</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Amazon Ember', 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .quiz-intro {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .quiz-intro h2 {
+            color: #232f3e;
+            margin-bottom: 15px;
+        }
+        
+        .quiz-intro p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .question-container {
+            display: none;
+        }
+        
+        .question-container.active {
+            display: block;
+        }
+        
+        .question {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .question h3 {
+            color: #232f3e;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .option {
+            padding: 15px;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .option:hover {
+            border-color: #2196F3;
+            background: #f0f8ff;
+        }
+        
+        .option.selected {
+            border-color: #2196F3;
+            background: #e3f2fd;
+        }
+        
+        .option.correct {
+            border-color: #4CAF50;
+            background: #e8f5e9;
+        }
+        
+        .option.wrong {
+            border-color: #dc3545;
+            background: #ffebee;
+        }
+        
+        .button {
+            padding: 12px 30px;
+            background: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .button:hover {
+            background: #1976D2;
+        }
+        
+        .button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .result-container {
+            display: none;
+            text-align: center;
+        }
+        
+        .result-container.show {
+            display: block;
+        }
+        
+        .score {
+            font-size: 48px;
+            font-weight: bold;
+            color: #2196F3;
+            margin: 20px 0;
+        }
+        
+        .award {
+            font-size: 80px;
+            margin: 20px 0;
+        }
+        
+        .award-text {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .progress {
+            background: #e0e0e0;
+            height: 8px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            background: #2196F3;
+            height: 100%;
+            transition: width 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎮 Training Safety Quiz</h1>
+            <p>Test your knowledge and win awards!</p>
+        </div>
+        
+        <div class="content">
+            <!-- Quiz Intro -->
+            <div id="quizIntro" class="quiz-intro">
+                <h2>Welcome to the Safety Quiz!</h2>
+                <p>
+                    Test your knowledge about warehouse safety and equipment operation.
+                    <br><br>
+                    <strong>Rules:</strong>
+                    <br>• 10 multiple choice questions
+                    <br>• Score 90%+ for Gold Badge 🥇
+                    <br>• Score 80-89% for Silver Badge 🥈
+                    <br>• Score 70-79% for Bronze Badge 🥉
+                    <br><br>
+                    Good luck!
+                </p>
+                <button class="button" onclick="startQuiz()">Start Quiz</button>
+            </div>
+            
+            <!-- Progress Bar -->
+            <div id="progressContainer" style="display: none;">
+                <div class="progress">
+                    <div id="progressBar" class="progress-bar" style="width: 0%"></div>
+                </div>
+                <p style="text-align: center; color: #666; margin-bottom: 20px;">
+                    Question <span id="currentQuestion">1</span> of <span id="totalQuestions">10</span>
+                </p>
+            </div>
+            
+            <!-- Questions -->
+            <div id="questionsContainer"></div>
+            
+            <!-- Result -->
+            <div id="resultContainer" class="result-container">
+                <h2>Quiz Complete!</h2>
+                <div class="score" id="finalScore">0%</div>
+                <div class="award" id="awardBadge"></div>
+                <div class="award-text" id="awardText"></div>
+                <p id="resultMessage"></p>
+                <br>
+                <button class="button" onclick="restartQuiz()">Try Again</button>
+                <button class="button" onclick="window.close()" style="background: #666; margin-left: 10px;">Close</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const questions = [
+            {
+                question: "What should you do before operating a forklift?",
+                options: [
+                    "Start immediately if you're in a hurry",
+                    "Perform a pre-operation inspection",
+                    "Skip the checklist if you used it yesterday",
+                    "Only check if something looks wrong"
+                ],
+                correct: 1
+            },
+            {
+                question: "What is the maximum speed limit for forklifts in the warehouse?",
+                options: [
+                    "As fast as possible to be efficient",
+                    "5 mph (8 km/h)",
+                    "15 mph (24 km/h)",
+                    "No speed limit"
+                ],
+                correct: 1
+            },
+            {
+                question: "When should you wear a safety vest?",
+                options: [
+                    "Only when a manager is watching",
+                    "Only during night shifts",
+                    "At all times in the warehouse",
+                    "Only when operating equipment"
+                ],
+                correct: 2
+            },
+            {
+                question: "What should you do if you notice a spill on the floor?",
+                options: [
+                    "Walk around it carefully",
+                    "Report it immediately and mark the area",
+                    "Ignore it if it's small",
+                    "Clean it only if you have time"
+                ],
+                correct: 1
+            },
+            {
+                question: "How often should PIT Safety training be renewed?",
+                options: [
+                    "Never, once is enough",
+                    "Every 5 years",
+                    "Annually or as required",
+                    "Only when you change equipment"
+                ],
+                correct: 2
+            },
+            {
+                question: "What is the proper lifting technique?",
+                options: [
+                    "Bend at the waist and lift with your back",
+                    "Bend your knees and lift with your legs",
+                    "Twist while lifting to save time",
+                    "Lift as fast as possible"
+                ],
+                correct: 1
+            },
+            {
+                question: "When is it safe to walk under a raised load?",
+                options: [
+                    "When you're in a hurry",
+                    "If the load looks secure",
+                    "Never",
+                    "Only if the operator gives permission"
+                ],
+                correct: 2
+            },
+            {
+                question: "What should you do if your equipment malfunctions?",
+                options: [
+                    "Try to fix it yourself",
+                    "Continue using it carefully",
+                    "Stop immediately and report it",
+                    "Finish your task first"
+                ],
+                correct: 2
+            },
+            {
+                question: "What is the purpose of the buddy system?",
+                options: [
+                    "To make work more fun",
+                    "To ensure safety through mutual observation",
+                    "To slow down operations",
+                    "It's not necessary"
+                ],
+                correct: 1
+            },
+            {
+                question: "When should you report a near-miss incident?",
+                options: [
+                    "Only if someone gets hurt",
+                    "Never, it's embarrassing",
+                    "Immediately, to prevent future accidents",
+                    "Only if a manager saw it"
+                ],
+                correct: 2
+            }
+        ];
+        
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let answers = [];
+        
+        function startQuiz() {
+            document.getElementById('quizIntro').style.display = 'none';
+            document.getElementById('progressContainer').style.display = 'block';
+            document.getElementById('totalQuestions').textContent = questions.length;
+            showQuestion(0);
+        }
+        
+        function showQuestion(index) {
+            currentQuestionIndex = index;
+            document.getElementById('currentQuestion').textContent = index + 1;
+            
+            const progress = ((index) / questions.length) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+            
+            const container = document.getElementById('questionsContainer');
+            const q = questions[index];
+            
+            let html = `
+                <div class="question-container active">
+                    <div class="question">
+                        <h3>Q${index + 1}. ${q.question}</h3>
+                    </div>
+                    <div class="options">
+            `;
+            
+            q.options.forEach((option, i) => {
+                html += `
+                    <div class="option" onclick="selectOption(${i})">
+                        ${option}
+                    </div>
+                `;
+            });
+            
+            html += `
+                    </div>
+                    <br>
+                    <button class="button" id="nextBtn" onclick="nextQuestion()" disabled>
+                        ${index < questions.length - 1 ? 'Next Question' : 'Finish Quiz'}
+                    </button>
+                </div>
+            `;
+            
+            container.innerHTML = html;
+        }
+        
+        function selectOption(optionIndex) {
+            const options = document.querySelectorAll('.option');
+            options.forEach(opt => opt.classList.remove('selected'));
+            options[optionIndex].classList.add('selected');
+            
+            answers[currentQuestionIndex] = optionIndex;
+            document.getElementById('nextBtn').disabled = false;
+        }
+        
+        function nextQuestion() {
+            if (currentQuestionIndex < questions.length - 1) {
+                showQuestion(currentQuestionIndex + 1);
+            } else {
+                showResults();
+            }
+        }
+        
+        function showResults() {
+            // Calculate score
+            score = 0;
+            questions.forEach((q, i) => {
+                if (answers[i] === q.correct) {
+                    score++;
+                }
+            });
+            
+            const percentage = Math.round((score / questions.length) * 100);
+            
+            // Determine award
+            let award = '';
+            let awardText = '';
+            let message = '';
+            
+            if (percentage >= 90) {
+                award = '🥇';
+                awardText = 'GOLD BADGE!';
+                message = 'Outstanding! You are a safety champion!';
+            } else if (percentage >= 80) {
+                award = '🥈';
+                awardText = 'SILVER BADGE!';
+                message = 'Great job! You have excellent safety knowledge!';
+            } else if (percentage >= 70) {
+                award = '🥉';
+                awardText = 'BRONZE BADGE!';
+                message = 'Good work! Keep learning and improving!';
+            } else {
+                award = '📚';
+                awardText = 'KEEP LEARNING!';
+                message = 'Review the training materials and try again!';
+            }
+            
+            document.getElementById('progressContainer').style.display = 'none';
+            document.getElementById('questionsContainer').style.display = 'none';
+            document.getElementById('resultContainer').classList.add('show');
+            document.getElementById('finalScore').textContent = percentage + '%';
+            document.getElementById('awardBadge').textContent = award;
+            document.getElementById('awardText').textContent = awardText;
+            document.getElementById('resultMessage').textContent = message;
+        }
+        
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            score = 0;
+            answers = [];
+            document.getElementById('resultContainer').classList.remove('show');
+            document.getElementById('quizIntro').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
